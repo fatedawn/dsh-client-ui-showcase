@@ -1,0 +1,11 @@
+# 依赖
+node_modules/
+
+# 备份（内联库体积大，不进版本库）
+*.bak-*
+*.bak
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+*.log

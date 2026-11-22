@@ -1,0 +1,5 @@
+# 展示优化 bundle patch
+# 把 client bundle 注入 DSH Web GUI；host 半侧为 no-op。
+- insert:
+    - id: showcase
+      name: dsh-client-ui-showcase
