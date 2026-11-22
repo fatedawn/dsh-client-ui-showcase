@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "title": {
+    "en": "YG DSH Plugins",
+    "zh": "YG 的 DSH 插件市场"
+  },
+  "description": {
+    "en": "Plugins that make DeepSeek Harness render more and describe less.",
+    "zh": "让 DeepSeek Harness 多渲染、少空谈的插件集合。"
+  },
+  "metadata": {
+    "categories": {
+      "visualization": {
+        "title": {
+          "en": "Visualization",
+          "zh": "可视化"
+        }
+      }
+    },
+    "labels": {
+      "mermaid": {
+        "title": {
+          "en": "Mermaid",
+          "zh": "Mermaid"
+        }
+      },
+      "katex": {
+        "title": {
+          "en": "KaTeX",
+          "zh": "KaTeX"
+        }
+      },
+      "offline": {
+        "title": {
+          "en": "Offline",
+          "zh": "离线运行"
+        }
+      }
+    },
+    "sortKeys": {}
+  },
+  "plugins": [
+    {
+      "name": "dsh-client-ui-showcase",
+      "title": {
+        "en": "Showcase",
+        "zh": "展示优化"
+      },
+      "description": {
+        "en": "Upgrades fenced code blocks in the conversation into rich components: inline SVG/HTML, Mermaid diagrams, KaTeX math, artifact cards, collapsible reasoning blocks, code copy and theme polish. Mermaid and KaTeX are bundled offline; no external requests.",
+        "zh": "把对话里的代码围栏升级成富组件：内联 SVG/HTML、Mermaid 图表、KaTeX 公式、Artifact 文件卡片、可折叠推理块、代码块复制与主题美化。Mermaid 与 KaTeX 已内联，零外链请求。"
+      },
+      "author": "fatedawn",
+      "homepage": "https://github.com/fatedawn/dsh-client-ui-showcase#readme",
+      "repository": {
+        "url": "https://github.com/fatedawn/dsh-client-ui-showcase"
+      },
+      "metadata": {
+        "category": "visualization",
+        "keywords": [
+          "showcase",
+          "render",
+          "svg",
+          "html",
+          "mermaid",
+          "katex",
+          "math",
+          "diagram",
+          "chart",
+          "artifact",
+          "collapsible",
+          "offline",
+          "展示优化",
+          "图表",
+          "公式"
+        ],
+        "labels": [
+          "mermaid",
+          "katex",
+          "offline"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.5.0",
+          "publishTimestamp": 1795319503,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/fatedawn/dsh-client-ui-showcase",
+            "commit": "aae9707ca81302c52bc8dc65e61ebc789dac11e0"
+          },
+          "engines": {
+            "dsh": ">=0.1.2-alpha.1"
+          }
+        }
+      ]
+    }
+  ]
+}
