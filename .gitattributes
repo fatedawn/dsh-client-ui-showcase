@@ -1,0 +1,6 @@
+# 保持 checkout 在各平台上字节一致：lib/client.js 与 lib/engine.js
+# 是内联了 mermaid/katex（base64）的大文件，内容即宿主加载的产物，
+# 绝不能被 git 的换行转换动到。
+* text=auto eol=lf
+lib/client.js -text
+lib/engine.js -text
