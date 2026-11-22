@@ -87,7 +87,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/fatedawn/dsh-client-ui-showcase",
-            "commit": "aae9707ca81302c52bc8dc65e61ebc789dac11e0"
+            "commit": "7dc50435b37c7733cc6c34979da84730a366bcfc"
           },
           "engines": {
             "dsh": ">=0.1.2-alpha.1"
