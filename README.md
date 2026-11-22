@@ -1,6 +1,6 @@
 # dsh-client-ui-showcase · 展示优化
 
-**版本：0.5.0** | 许可证：MIT | 零运行时依赖 | Mermaid 已内联，零外链请求
+**版本：0.5.0** | 许可证：MIT | 零运行时依赖 | Mermaid 与 KaTeX 均已内联，**零外链请求**
 
 把对话里的代码围栏升级成富组件：内联 SVG/HTML、Mermaid 图表、KaTeX 公式、Artifact 文件卡片、可折叠推理块、代码块复制与主题美化。
 
@@ -95,20 +95,32 @@ dsh plugin --profile <name> add dsh-client-ui-showcase
 | `svg` / `html` | `true` | 内联 SVG / HTML 组件 |
 | `mermaid` | `true` | Mermaid 图表（**内联，不走 CDN**） |
 | `artifact` | `true` | Artifact 卡片 |
-| `math` | `true` | 数学公式（KaTeX，懒加载） |
+| `math` | `true` | 数学公式（KaTeX，**内联，不走 CDN**） |
 | `collapsible` | `true` | reasoning/tool/thinking 折叠 |
 | `codeCopy` | `true` | 代码块复制 + 语言徽章 |
 | `theme` | `true` | 主题 CSS |
-| `katexUrl` / `katexCss` | jsDelivr CDN | 懒加载地址（mermaid 已内联，不在此列） |
 | `collapsibleOpen` | `{reasoning:false, thinking:false, tool:true}` | 各类折叠块默认展开与否 |
+
+> 已移除 `mermaidUrl` / `katexUrl` / `katexCss` 三个配置项：两者都改为内联，不再有可配置的远程地址。
 
 ---
 
 ## 六、离线与降级
 
-- **Mermaid：完全离线。** 3.4MB 的 UMD 已 base64 内联进 `lib/client.js`，首次用到时解码 → Blob → 注入，实测 448ms 出图，零网络请求。
-- **KaTeX：仍走 CDN。** 不可达时公式降级为原始文本，不白屏、不报错。
-- 为什么 mermaid 要内联：DSH 宿主只服务 `client.*.js` 形式的 bundle 文件（带 rev 哈希），`vendor/` 下的独立文件会被 404，所以「把库放本地再改路径指过去」这条路在插件机制下不成立，只能内联。
+- **Mermaid：完全离线。** 3.4MB 的 UMD 已 base64 内联，首次用到时解码 → Blob → 注入，实测 448ms 出图。
+- **KaTeX：完全离线。** 275KB JS 内联，CSS 里 20 个 woff2 字体已转成 `data:` URI，注入一次即生效。实测公式正常渲染、字体真实加载。
+- 实测浏览器网络面板：只有 `127.0.0.1` 与 `blob:` 请求，**零外部请求**。
+- 为什么必须内联：DSH 宿主只服务 `client.*.js` 形式的 bundle 文件（带 rev 哈希），`vendor/` 下的独立文件会被 404，所以「把库放本地再改路径指过去」这条路在插件机制下不成立，只能内联。
+
+### 体积代价
+
+| 阶段 | bundle 大小 |
+|---|---|
+| 原始（依赖 CDN） | 25 KB |
+| 内联 Mermaid | 4.57 MB |
+| 内联 Mermaid + KaTeX | 5.27 MB |
+
+作为参照，同为市场插件的 `dsh-client-ui-show-widget` 是 7.68 MB，所以这个体积在插件生态里属正常范围。
 
 ---
 
