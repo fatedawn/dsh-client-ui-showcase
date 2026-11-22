@@ -67,11 +67,28 @@ import { startShowcase } from 'dsh-client-ui-showcase'
 startShowcase({ enabled: true, mermaid: true })
 ```
 
-### 方式 C：npm 市场安装（发布后）
+### 方式 C：插件市场安装（推荐）
 
-```bash
-dsh plugin --profile <name> add dsh-client-ui-showcase
+本仓库自带市场索引 `market/index.json`（DSH 市场格式 1，`source.type = "git"`，版本锁定到精确 commit）。
+
+在 DSH 的 `Plugins → Discover → Add index source` 里填入：
+
 ```
+https://raw.githubusercontent.com/fatedawn/dsh-client-ui-showcase/main/market/index.json
+```
+
+或直接写进 profile 的 `cordis.patch.yml`：
+
+```yaml
+- id: plugin-market
+  config:
+    indexes:
+      - https://raw.githubusercontent.com/fatedawn/dsh-client-ui-showcase/main/market/index.json
+```
+
+之后在 Discover 页搜索「展示优化」或 `showcase` 安装。
+
+> 为什么用 git 源而不是 npm：本机 npm registry 指向 npmmirror（只读镜像，不能发布），且没有 npm 发布凭据。git 源由市场 schema 原生支持，`commit` 字段保证每次安装复现同一份代码。
 
 ---
 
